@@ -4,13 +4,20 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useContext } from "react";
 import "./header.css";
-import ContextState from "../../context/contextState";
+import { useState } from "react";
 
-const Header = () => {
-  const contextValue = useContext(ContextState);
-  console.log(contextValue);
+const Header = ({ onSearch }) => {
+  console.log(onSearch);
+  const { searchValue, setSearchValue } = useState("");
+
+  const onChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    onSearch(searchValue);
+  };
 
   return (
     <>
@@ -44,12 +51,16 @@ const Header = () => {
               </Nav>
               <Form className="d-flex links">
                 <Form.Control
+                  value={searchValue}
                   type="search"
                   placeholder="Movie Names"
                   className="me-2 bg-light"
                   aria-label="Search"
+                  onChange={onChange}
                 />
-                <Button variant="secondary links">Search</Button>
+                <Button variant="secondary links" onClick={handleSearch}>
+                  Search
+                </Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

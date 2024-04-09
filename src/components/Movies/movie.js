@@ -12,7 +12,8 @@ const apiStatusConstants = {
   failure: "FAILURE",
 };
 
-const Movie = () => {
+const Movie = ({ searchValue }) => {
+  console.log(searchValue);
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
     movieList: null,
@@ -27,7 +28,7 @@ const Movie = () => {
         errorMsg: null,
       });
 
-      const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&query=&page=1`;
+      const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&query=${searchValue}&page=1`;
       const option = {
         method: "GET",
       };
@@ -51,7 +52,7 @@ const Movie = () => {
     };
 
     getMovies();
-  }, []);
+  }, [searchValue]);
 
   const renderFailureView = () => {
     const { errorMsg } = apiResponse;
@@ -75,7 +76,7 @@ const Movie = () => {
     return (
       <ul className="movie-card-container">
         {movieList.map((eachMovie) => (
-          <MovieCard movie={eachMovie} />
+          <MovieCard movie={eachMovie} key={eachMovie.id} />
         ))}
       </ul>
     );

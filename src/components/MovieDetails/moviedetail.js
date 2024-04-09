@@ -12,7 +12,6 @@ const apiStatusConstants = {
 };
 
 export default function MovieDetail(props) {
-  console.log(props);
   const { match } = props;
   const { params } = match;
   const { id } = params;
@@ -55,7 +54,7 @@ export default function MovieDetail(props) {
     };
 
     getMovie();
-  }, []);
+  }, [id]);
 
   const renderSuccess = () => {
     const { movieDetail } = apiResponse;
