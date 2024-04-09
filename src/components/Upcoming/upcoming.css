@@ -1,0 +1,21 @@
+.upcoming-movie-card-container {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 9px;
+  }
+  
+  .upcoming-movie-container {
+    background-color: #282b33;
+    padding-top: 59px;
+  }
+  
+  .loader-spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
