@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { InfinitySpin } from "react-loader-spinner";
 import MovieCard from "../MovieCards/moviesCard";
 import "./movie.css";
+import { SearchContext } from "../../context/context";
 
 const Api_key = "ae5f31e6a117648d9a5029a810f766e5";
 
@@ -12,8 +13,10 @@ const apiStatusConstants = {
   failure: "FAILURE",
 };
 
-const Movie = ({ searchValue }) => {
-  console.log(searchValue);
+const Movie = () => {
+  const { search } = useContext(SearchContext);
+  console.log(search);
+
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
     movieList: null,
@@ -28,7 +31,7 @@ const Movie = ({ searchValue }) => {
         errorMsg: null,
       });
 
-      const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&query=${searchValue}&page=1`;
+      const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${Api_key}&language=en-US&query=${search}&page=1`;
       const option = {
         method: "GET",
       };
@@ -52,7 +55,7 @@ const Movie = ({ searchValue }) => {
     };
 
     getMovies();
-  }, [searchValue]);
+  }, [search]);
 
   const renderFailureView = () => {
     const { errorMsg } = apiResponse;
