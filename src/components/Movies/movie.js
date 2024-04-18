@@ -15,7 +15,6 @@ const apiStatusConstants = {
 
 const Movie = () => {
   const { search } = useContext(SearchContext);
-  console.log(search);
 
   const [apiResponse, setApiResponse] = useState({
     status: apiStatusConstants.initial,
