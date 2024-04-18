@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/movie-dashboard/static/css/main.80cbaa12.css",
+    "main.js": "/movie-dashboard/static/js/main.fd35cab6.js",
+    "index.html": "/movie-dashboard/index.html",
+    "main.80cbaa12.css.map": "/movie-dashboard/static/css/main.80cbaa12.css.map",
+    "main.fd35cab6.js.map": "/movie-dashboard/static/js/main.fd35cab6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80cbaa12.css",
+    "static/js/main.fd35cab6.js"
+  ]
+}
